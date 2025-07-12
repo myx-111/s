@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山河回响·红色足迹网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入Swiper轮播图库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#c62828',
+                        secondary: '#1565c0',
+                        neutral: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+            .swiper-button-disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 导航栏 -->
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 
+    bg-[rgba(165,42,42,0.95)] backdrop-blur-md shadow-lg border-b border-[rgba(255,255,255,0.1)]">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="bg-[#FFD700] text-[#8B0000] p-2 rounded-lg shadow-md">
+                <i class="fa fa-book text-2xl"></i>
+            </div>
+            <span class="text-xl font-bold text-[#FFD700] 
+                text-shadow-[2px_2px_4px_rgba(0,0,0,0.8)] 
+                letter-spacing-[2px]">
+                红色基因铸魂，青春奋进逐梦
+            </span>
+        </div>
+        
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-1">
+            <a href="#home" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">首页</a>
+            <a href="#museum" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">军事博物馆</a>
+            <a href="#square" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">天安门广场</a>
+            <a href="#monument" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">人民英雄纪念碑</a>
+            <a href="#honglou" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">北大红楼</a>
+            <a href="#history" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">党史展览馆</a>
+            <a href="#movie" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">红色观影</a>
+            <a href="#script" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">红色剧本杀</a>
+            <a href="#quiz" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">知识问答</a>
+            <a href="#gallery" class="px-4 py-2 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300 
+                transform hover:scale-105 hover:shadow-lg">实践掠影</a>
+        </div>
+        
+        <!-- 移动端菜单按钮 -->
+        <button id="menuBtn" class="md:hidden text-[#FFD700] focus:outline-none p-2 rounded-full 
+            hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">
+            <i class="fa fa-bars text-xl"></i>
+        </button>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-[rgba(165,42,42,0.95)] backdrop-blur-md 
+        shadow-xl absolute w-full border-b border-[rgba(255,255,255,0.1)]">
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+            <a href="#home" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">首页</a>
+            <a href="#museum" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">军事博物馆</a>
+            <a href="#square" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">天安门广场</a>
+            <a href="#monument" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">人民英雄纪念碑</a>
+            <a href="#honglou" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">北大红楼</a>
+            <a href="#history" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">党史展览馆</a>
+            <a href="#movie" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">红色观影</a>
+            <a href="#script" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">红色剧本杀</a>
+            <a href="#quiz" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">知识问答</a>
+            <a href="#gallery" class="px-4 py-3 rounded-md text-[#FFD700] font-medium 
+                hover:bg-[#FFD700] hover:text-[#8B0000] transition-all duration-300">实践掠影</a>
+        </div>
+    </div>
+</nav>
+
+    <!-- 英雄区域 -->
+<section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="./images/天安门2.jpg" alt="天安门广场全景" class="w-full h-full object-cover">
+
+        <div class="absolute inset-0 bg-[#8B0000]/40"></div>
+    </div>
+    <div class="container mx-auto px-4 z-10 text-center">
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-6 leading-tight text-shadow">
+            重温红色历史<br>传承革命精神
+        </h1>
+        <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 max-w-3xl mx-auto">
+            走进历史深处，感受革命精神，在实践中传承红色文化，在体验中激发爱国热情
+        </p>
+        <a href="#square" class="inline-block bg-[#B22222] hover:bg-[#8B0000] text-white font-medium py-3 px-8 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            开始红色之旅 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#square" class="text-white/80 hover:text-white">
+            <i class="fa fa-angle-down text-3xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- 天安门广场 -->
+<section id="square" class="py-20 relative overflow-hidden">
+    <!-- 背景图 -->
+    <div class="absolute inset-0 z-0">
+        <img src="./images/bj2.png" alt="天安门背景" class="w-full h-full object-cover">
+
+    </div>
+               <div class="container mx-auto px-4 relative z-10">
+                    <div class="text-center mb-16">
+                <span class="inline-block text-primary font-medium mb-2">展馆参观：在历史长卷中感悟奋斗征程</span>
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">天安门广场</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/30">
+                <h3 class="text-2xl font-bold text-black mb-4">人民的广场，历史的见证</h3>
+                <p class="text-gray-800 mb-6 leading-relaxed">
+                    天安门广场是世界上最大的城市广场之一，位于北京市中心，是中国现代革命的象征。这里曾举行过无数次重大的政治集会和庆祝活动，见证了中华民族的崛起与复兴。
+                </p>
+                <p class="text-gray-800 mb-6 leading-relaxed">
+                    在社会实践中，我们来到天安门广场，瞻仰人民英雄纪念碑，参观人民大会堂，感受祖国的庄严与伟大。清晨，我们在这里观看庄严的升旗仪式，目睹五星红旗与朝阳一同升起，心中涌起无限的爱国情怀。
+                </p>
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <div class="bg-white/70 rounded-lg p-4 flex items-start shadow-sm border border-white/50">
+                        <i class="fa fa-map-marker text-red-600 text-xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-black">地理位置</h4>
+                            <p class="text-gray-700 text-sm">北京市东城区东长安街</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/70 rounded-lg p-4 flex items-start shadow-sm border border-white/50">
+                        <i class="fa fa-clock-o text-red-600 text-xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-black">开放时间</h4>
+                            <p class="text-gray-700 text-sm">全天开放</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-1 md:order-2 rounded-xl overflow-hidden shadow-2xl border-2 border-white/30">
+                <div class="swiper squareSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./images/天安门1.jpg" alt="天安门广场全景" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/天安门2.jpg" alt="天安门广场夜景" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/天安门3.jpg" alt="天安门城楼" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next text-white bg-red-600 w-10 h-10 rounded-full flex items-center justify-center shadow-md"></div>
+                    <div class="swiper-button-prev text-white bg-red-600 w-10 h-10 rounded-full flex items-center justify-center shadow-md"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 人民英雄纪念碑 -->
+<section id="monument" class="py-20 bg-gray-50 relative overflow-hidden">
+
+<div class="absolute inset-0 z-0 opacity-5">
+    <img src="./images/bj3 (2).png" alt="背景图" class="w-full h-full object-cover ">
+</div>  
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="rounded-xl overflow-hidden shadow-xl hover-scale">
+                <div class="swiper monumentSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./images/人民英雄纪念碑1.jpg" alt="人民英雄纪念碑" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/人民英雄纪念碑2.jpg" alt="纪念碑浮雕" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/人民英雄纪念碑4.jpg" alt="纪念碑基座" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 relative inline-block pl-2">
+                    缅怀先烈，铭记历史
+                    <span class="absolute left-0 top-0 bottom-0 w-1 bg-red-600 rounded-full"></span>
+                    <span class="block mt-1 h-0.5 w-full bg-gradient-to-r from-red-600 to-transparent"></span>
+                </h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    人民英雄纪念碑位于天安门广场中心，是为纪念中国近现代史上的英雄烈士而修建的。碑身正面镌刻着毛泽东题写的"人民英雄永垂不朽"八个鎏金大字，背面是毛泽东起草、周恩来题写的碑文。
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    我们怀着崇敬的心情来到这里，向人民英雄默哀致敬。触摸着碑身上的浮雕，仿佛能感受到历史的脉搏，听到先烈们的呐喊。这让我们更加珍惜现在来之不易的和平生活，也激励着我们为实现中华民族伟大复兴的中国梦而努力奋斗。
+                </p>
+                <div class="bg-red-50 rounded-lg p-6 border-l-4 border-red-600 shadow-md relative overflow-hidden">
+                    <!-- 装饰性五角星背景 -->
+                    <div class="absolute -right-6 -top-6 w-20 h-20 text-red-200 opacity-30">
+                        <i class="fa fa-star text-[6rem]"></i>
+                    </div>
+                    
+                    <p class="italic text-gray-800 mb-2 leading-relaxed relative z-10">
+                        "三年以来，在人民解放战争和人民革命中牺牲的人民英雄们永垂不朽！<br>
+                        三十年以来，在人民解放战争和人民革命中牺牲的人民英雄们永垂不朽！<br>
+                        由此上溯到一千八百四十年，从那时起，为了反对内外敌人，争取民族独立和人民自由幸福，在历次斗争中牺牲的人民英雄们永垂不朽！"
+                    </p>
+                    
+                    <div class="flex items-center mt-4 pt-4 border-t border-red-100 relative z-10">
+                        <div class="w-8 h-0.5 bg-red-600 mr-3"></div>
+                        <p class="text-red-900 font-medium">人民英雄纪念碑碑文</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 中国人民革命军事博物馆 -->
+    <section id="museum" class="py-20 bg-white">
+        <div class="absolute inset-0 z-0 opacity-5">
+    <img src="./images/bj5.png" alt="背景图" class="w-full h-full object-cover ">
+</div>  
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">中国人民革命军事博物馆</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <!-- 军事博物馆轮播图 -->
+            <div class="swiper museumSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                            <img src="./images/军博1.1.png" alt="军事博物馆外观" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">博物馆外观</h3>
+                                <p class="text-gray-600 mb-4">
+                                    中国人民革命军事博物馆是中国唯一的大型综合性军事历史博物馆，建筑气势恢宏，庄严肃穆。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                            <img src="./images/军博1.2.jpg" alt="军事历史展览" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">军事历史展览</h3>
+                                <p class="text-gray-600 mb-4">
+                                    馆内陈列着大量珍贵的历史文物和资料，全面展示了中国人民革命战争和国防建设的历史进程。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                            <img src="./images/军博2.1.jpg" alt="武器装备展示" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">武器装备展示</h3>
+                                <p class="text-gray-600 mb-4">
+                                    馆外广场上陈列着各种现代化武器装备，包括飞机、坦克、火炮等，让人们直观感受我国国防力量的发展。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                            <img src="./images/军博4.1.jpg" alt="革命历史展区" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">革命历史展区</h3>
+                                <p class="text-gray-600 mb-4">
+                                    展区展示了中国共产党领导的人民军队从创建到发展的光辉历程，包括土地革命、抗日战争、解放战争等重要历史时期。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <div class="mt-12 bg-neutral rounded-xl p-8">
+                <h4 class="text-xl font-bold text-gray-800 mb-4">参观感悟</h4>
+                <p class="text-gray-600 mb-4">
+                    在军事博物馆里，我们看到了从鸦片战争到现代中国的军事发展历程，看到了无数先烈为了国家和民族的独立而英勇牺牲的事迹。这些珍贵的历史文物和资料，让我们深刻认识到了今天的和平来之不易，也让我们更加珍惜现在的生活。
+                </p>
+                <p class="text-gray-600">
+                    通过这次参观，同学们纷纷表示要铭记历史，缅怀先烈，努力学习科学文化知识，为实现中华民族伟大复兴的中国梦贡献自己的力量。
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+<!-- 北大红楼 -->
+<section id="honglou" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">北大红楼</h2>
+            <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="rounded-xl overflow-hidden shadow-xl hover-scale">
+                <!-- 轮播图容器 -->
+                <div class="swiper honglouSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./images/xwh2.jpg" alt="北大红楼" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/新文化2.jpg" alt="红楼内景" class="w-full h-auto">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/xwh1.jpg" alt="历史文物" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">新文化运动的摇篮</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    北大红楼是北京大学旧址的一部分，因墙体为红色而得名。这里是新文化运动的中心，是五四运动的策源地，是中国最早传播马克思主义和民主科学思想的重要场所。
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    走进北大红楼，仿佛能听到百年前陈独秀、李大钊、鲁迅等新文化运动先驱们的呐喊声。这里陈列着大量珍贵的历史文物和资料，生动展现了新文化运动、五四运动的历史过程和重要意义。
+                </p>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center">
+                        <i class="fa fa-map-marker text-primary mr-3"></i>
+                        <span class="text-gray-700">北京市东城区五四大街29号</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa fa-clock-o text-primary mr-3"></i>
+                        <span class="text-gray-700">周二至周日 9:00-17:00（16:30停止入馆）</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa fa-ticket text-primary mr-3"></i>
+                        <span class="text-gray-700">免费开放，需提前预约</span>
+                    </div>
+                </div>
+                
+                <!-- 背景知识按钮 -->
+                <button onclick="openBackgroundModal()" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg mr-4 transition duration-300">
+                    新文化运动背景
+                </button>
+                
+                <!-- 历史人物按钮 -->
+                <button onclick="openFiguresModal()" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                    伟大历史人物
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 新文化运动背景模态框 -->
+<div id="backgroundModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-red-50 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-gray-800">新文化运动历史背景</h3>
+                <button onclick="closeModal('backgroundModal')" class="text-gray-500 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="prose max-w-none text-gray-700">
+                <p>新文化运动是20世纪初中国一场重要的思想文化革新运动，始于1915年，以陈独秀创办《新青年》杂志为标志，持续到1920年代初。</p>
+                
+                <h4 class="text-xl font-semibold mt-6 mb-3">历史背景</h4>
+                <p>辛亥革命后，中国虽然推翻了帝制，但社会变革不彻底，封建思想仍然根深蒂固。袁世凯称帝、张勋复辟等事件使知识分子认识到，仅有政治革命不够，必须进行思想文化革命。</p>
+                
+                <h4 class="text-xl font-semibold mt-6 mb-3">主要内容</h4>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>提倡民主与科学（德先生与赛先生）</li>
+                    <li>反对封建礼教和儒家思想</li>
+                    <li>提倡白话文，反对文言文</li>
+                    <li>引进西方先进思想</li>
+                    <li>推动妇女解放</li>
+                </ul>
+                
+                <h4 class="text-xl font-semibold mt-6 mb-3">历史意义</h4>
+                <p>新文化运动是中国近代史上一次伟大的思想解放运动，为五四运动奠定了思想基础，促进了马克思主义在中国的传播，对中国现代文化、教育、政治产生了深远影响。</p>
+                
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="font-bold mb-2">《新青年》杂志</h5>
+                        <p>1915年由陈独秀在上海创办，是新文化运动的主要阵地，发表了大量倡导民主科学、反对封建礼教的文章。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="font-bold mb-2">北京大学</h5>
+                        <p>在蔡元培"思想自由，兼容并包"的办学方针下，北大成为新文化运动的中心，聚集了陈独秀、李大钊、胡适等新文化运动领袖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 历史人物模态框 -->
+<div id="figuresModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">新文化运动相关历史人物</h3>
+                <button onclick="closeModal('figuresModal')" class="text-gray-500 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- 3D翻转卡片展示 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 陈独秀 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="images/陈独秀.jpg" alt="陈独秀" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">陈独秀</h4>
+                            <p class="text-sm text-gray-600 mt-2">《新青年》创始人</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">陈独秀</h4>
+                            <p class="text-gray-700 text-sm">新文化运动的倡导者，1915年创办《新青年》杂志，提倡民主与科学，反对封建礼教，对中国近代思想启蒙产生了深远影响。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>创办《新青年》杂志</li>
+                                    <li>提出民主与科学口号</li>
+                                    <li>中国共产党主要创始人</li>
+                                    <li>推动白话文运动</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 李大钊 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="images/李大钊.png" alt="李大钊" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">李大钊</h4>
+                            <p class="text-sm text-gray-600 mt-2">马克思主义先驱</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">李大钊</h4>
+                            <p class="text-gray-700 text-sm">中国最早的马克思主义者之一，北京大学图书馆主任。他在《新青年》上发表《我的马克思主义观》，系统介绍马克思主义理论。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>最早传播马克思主义</li>
+                                    <li>中国共产党主要创始人</li>
+                                    <li>领导五四运动</li>
+                                    <li>培养大批进步青年</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 鲁迅 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-green-50 to-teal-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="./images/鲁迅.jpg" alt="鲁迅" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">鲁迅</h4>
+                            <p class="text-sm text-gray-600 mt-2">现代文学奠基人</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">鲁迅</h4>
+                            <p class="text-gray-700 text-sm">中国现代文学的奠基人，新文化运动的重要参与者。他的《狂人日记》是中国现代文学史上第一篇白话小说。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>创作《狂人日记》等白话小说</li>
+                                    <li>批判封建礼教</li>
+                                    <li>开创现代杂文</li>
+                                    <li>培养青年作家</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 胡适 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="./images/胡适.jpg" alt="胡适" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">胡适</h4>
+                            <p class="text-sm text-gray-600 mt-2">白话文运动领袖</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">胡适</h4>
+                            <p class="text-gray-700 text-sm">新文化运动的领袖之一，提倡白话文运动。1917年发表《文学改良刍议》，倡导白话文学，推动了中国的语文改革。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>倡导白话文运动</li>
+                                    <li>提出"大胆假设，小心求证"</li>
+                                    <li>整理国故，再造文明</li>
+                                    <li>推动学术现代化</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 蔡元培 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="./images/蔡元培.jpg" alt="蔡元培" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">蔡元培</h4>
+                            <p class="text-sm text-gray-600 mt-2">教育改革家</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">蔡元培</h4>
+                            <p class="text-gray-700 text-sm">著名教育家，曾任北京大学校长。他提出"思想自由，兼容并包"的办学方针，改革北大，使其成为新文化运动的中心。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>改革北京大学</li>
+                                    <li>提出"思想自由，兼容并包"</li>
+                                    <li>推动美育教育</li>
+                                    <li>培养新文化人才</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 钱玄同 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4">
+                                <img src="./images/钱xuantong.jpg" alt="钱玄同" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">钱玄同</h4>
+                            <p class="text-sm text-gray-600 mt-2">语文改革先锋</p>
+                        </div>
+                        <div class="flip-card-back bg-white rounded-xl shadow-lg p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">钱玄同</h4>
+                            <p class="text-gray-700 text-sm">语言文学家，新文化运动的积极参与者。他主张废除汉字，改用拼音文字，虽极端但推动了语文改革。</p>
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <h5 class="font-semibold text-gray-800 mb-2">主要贡献:</h5>
+                                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                    <li>参与新文化运动</li>
+                                    <li>推动语文改革</li>
+                                    <li>与刘半农合作"双簧信"</li>
+                                    <li>研究音韵学</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 3D翻转卡片样式 */
+    .flip-card {
+        perspective: 1000px;
+        height: 300px;
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+    
+    /* 模态框动画 */
+    .modal-enter {
+        opacity: 0;
+    }
+    
+    .modal-enter-active {
+        opacity: 1;
+        transition: opacity 300ms;
+    }
+    
+    .modal-exit {
+        opacity: 1;
+    }
+    
+    .modal-exit-active {
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+</style>
+
+<script>
+    // 打开背景模态框
+    function openBackgroundModal() {
+        document.getElementById('backgroundModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 打开人物模态框
+    function openFiguresModal() {
+        document.getElementById('figuresModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 关闭模态框
+    function closeModal(id) {
+        document.getElementById(id).classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // 点击模态框外部关闭
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('backgroundModal')) {
+            closeModal('backgroundModal');
+        }
+        if (event.target === document.getElementById('figuresModal')) {
+            closeModal('figuresModal');
+        }
+    }
+</script>
+
+
+    <!-- 中国共产党历史展览馆 -->
+    <section id="history" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">中国共产党历史展览馆</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">铭记光辉历史，传承红色基因</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        中国共产党历史展览馆是一座全面展示中国共产党百年历史的大型综合性展览馆。展览馆以"不忘初心、牢记使命"为主题，通过丰富的历史文物、图片、视频和场景复原等形式，生动展现了中国共产党成立百年来的光辉历程和伟大成就。
+                    </p>
+                    <div class="mb-8">
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">新民主主义革命时期</span>
+                                <span class="text-primary font-medium">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">社会主义革命和建设时期</span>
+                                <span class="text-primary font-medium">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">改革开放和社会主义现代化建设新时期</span>
+                                <span class="text-primary font-medium">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">中国特色社会主义新时代</span>
+                                <span class="text-primary font-medium">92%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-8 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        线上参观展览馆 <i class="fa fa-vr-cardboard ml-2"></i>
+                    </a>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-xl hover-scale">
+                    <!-- 轮播图容器 -->
+                    <div class="swiper historySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./images/中国共产党历史1.jpg" alt="中国共产党历史展览馆" class="w-full h-auto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/中国共产党历史2.jpg" alt="展览馆内景" class="w-full h-auto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/中国共产党历史3.jpg" alt="历史文物展示" class="w-full h-auto">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 红色观影 -->
+<section id="movie" class="py-20 ">
+
+    <div class="container mx-auto px-4 relative z-10">
+
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="inline-block text-primary font-medium mb-2">沉浸式体验：在角色与光影中触碰红色历史</span>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">红色观影、红色剧本杀</h2>
+            <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <!-- 电影轮播图 -->
+        <div class="swiper movieSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                        <img src="./images/觉醒年代.png" alt="《觉醒年代》海报" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">《觉醒年代》</h3>
+                            <p class="text-gray-600 mb-4">
+                                以中国共产党成立的历史进程为线索，展现了从新文化运动、五四运动到中国共产党建立这段波澜壮阔的历史画卷。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">历史 / 剧情</span>
+                                <button class="text-primary hover:text-primary/80 font-medium movie-details-toggle" 
+                                        data-target="details-1">了解更多</button>
+                            </div>
+                            <!-- 详细内容 - 初始隐藏 -->
+                            <div id="details-1" class="movie-details-content hidden overflow-hidden transition-all duration-500">
+                                <div class="pt-4 mt-4 border-t border-gray-200">
+                                    <h4 class="font-semibold text-gray-800 mb-2">剧情详情：</h4>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        《觉醒年代》以1915年《青年杂志》问世到1921年《新青年》成为中国共产党机关刊物为时间线，展现了从新文化运动、五四运动到中国共产党建立这段波澜壮阔的历史画卷。
+                                    </p>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        剧中深刻揭示了马克思主义同中国工人运动相结合和中国共产党建立的历史必然性，艺术地再现了李大钊、陈独秀、毛泽东、周恩来等革命先驱追求真理、燃烧理想的激情岁月。
+                                    </p>
+                                    <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                        <li><strong>导演：</strong>张永新</li>
+                                        <li><strong>主演：</strong>于和伟、张桐、侯京健、马少骅</li>
+                                        <li><strong>获奖：</strong>第27届上海电视节白玉兰奖最佳导演、最佳原创编剧</li>
+                                    </ul>
+                                    <button class="text-xs text-primary hover:text-primary/80 movie-details-close">收起详情</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                        <img src="./images/1921.png" alt="《1921》海报" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">《1921》</h3>
+                            <p class="text-gray-600 mb-4">
+                                聚焦1921年中国共产党成立这一开天辟地的大事变，讲述了首批中国共产党人在风雨如磐中担起救亡图存重任的故事。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">历史 / 剧情</span>
+                                <button class="text-primary hover:text-primary/80 font-medium movie-details-toggle" 
+                                        data-target="details-2">了解更多</button>
+                            </div>
+                            <!-- 详细内容 - 初始隐藏 -->
+                            <div id="details-2" class="movie-details-content hidden overflow-hidden transition-all duration-500">
+                                <div class="pt-4 mt-4 border-t border-gray-200">
+                                    <h4 class="font-semibold text-gray-800 mb-2">剧情详情：</h4>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        《1921》讲述了1921年，13位平均年龄仅28岁的热血青年，从五湖四海突破国际国内黑暗势力的阻挠，聚集上海召开中国共产党第一次全国代表大会，宣告中国共产党的成立。
+                                    </p>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        影片以细腻的笔触描绘了毛泽东、李达、刘仁静等年轻革命者的心路历程，展现了他们在民族危亡之际的觉醒与担当，以及为理想奋斗牺牲的精神。
+                                    </p>
+                                    <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                        <li><strong>导演：</strong>黄建新、郑大圣</li>
+                                        <li><strong>主演：</strong>黄轩、倪妮、王仁君、刘昊然</li>
+                                        <li><strong>获奖：</strong>第34届中国电影金鸡奖最佳编剧提名</li>
+                                    </ul>
+                                    <button class="text-xs text-primary hover:text-primary/80 movie-details-close">收起详情</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale h-full">
+                        <img src="./images/长津湖.png" alt="《长津湖》海报" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">《长津湖》</h3>
+                            <p class="text-gray-600 mb-4">
+                                以抗美援朝战争中的长津湖战役为背景，讲述了中国人民志愿军在极寒严酷环境下坚守阵地、奋勇杀敌的感人故事。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">战争 / 历史</span>
+                                <button class="text-primary hover:text-primary/80 font-medium movie-details-toggle" 
+                                        data-target="details-3">了解更多</button>
+                            </div>
+                            <!-- 详细内容 - 初始隐藏 -->
+                            <div id="details-3" class="movie-details-content hidden overflow-hidden transition-all duration-500">
+                                <div class="pt-4 mt-4 border-t border-gray-200">
+                                    <h4 class="font-semibold text-gray-800 mb-2">剧情详情：</h4>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        《长津湖》以抗美援朝战争第二次战役中的长津湖战役为背景，讲述了一段波澜壮阔的历史：71年前，中国人民志愿军赴朝作战，在极寒严酷环境下，东线作战部队凭着钢铁意志和英勇无畏的战斗精神一路追击，奋勇杀敌，扭转了战场态势，打出了军威国威。
+                                    </p>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        影片通过伍千里、伍万里兄弟的视角，展现了志愿军战士服从命令视死如归、冻成冰雕也不退缩的革命精神，和不惧强敌敢于战斗、敢于胜利的英雄气概。
+                                    </p>
+                                    <ul class="text-sm text-gray-600 space-y-1 mb-3">
+                                        <li><strong>导演：</strong>陈凯歌、徐克、林超贤</li>
+                                        <li><strong>主演：</strong>吴京、易烊千玺、段奕宏、朱亚文</li>
+                                        <li><strong>获奖：</strong>第36届中国电影金鸡奖最佳故事片</li>
+                                    </ul>
+                                    <button class="text-xs text-primary hover:text-primary/80 movie-details-close">收起详情</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- 更多影片网格（初始隐藏） -->
+        <div id="more-films-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 transition-all duration-500">
+            <!-- 更多影片卡片 -->
+            <div class="film-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:z-10 hover:shadow-xl">
+                <img src="./images/jjdy1.png" alt="《建军大业》海报" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">《建军大业》</h3>
+                    <p class="text-gray-600 mb-4">
+                        讲述1927年中国共产党发动南昌起义，创建人民军队的故事。
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">历史 / 战争</span>
+                        <button class="text-primary hover:text-primary/80 font-medium">了解更多</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="film-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:z-10 hover:shadow-xl">
+                <img src="./images/whwdzg.png" alt="《我和我的祖国》海报" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">《我和我的祖国》</h3>
+                    <p class="text-gray-600 mb-4">
+                        讲述新中国成立70年间普通百姓与共和国息息相关的故事。
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">剧情 / 历史</span>
+                        <button class="text-primary hover:text-primary/80 font-medium">了解更多</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="film-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:z-10 hover:shadow-xl">
+                <img src="./images/hhxd.png" alt="《红海行动》海报" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">《红海行动》</h3>
+                    <p class="text-gray-600 mb-4">
+                        讲述中国海军"蛟龙突击队"执行撤侨任务的故事。
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">动作 / 战争</span>
+                        <button class="text-primary hover:text-primary/80 font-medium">了解更多</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                观影结束后，我们组织了交流分享会，同学们纷纷表示被影片中的英雄事迹所感动，深刻体会到了革命先辈们的牺牲精神和爱国情怀。大家纷纷表示，要珍惜现在的幸福生活，努力学习，为祖国的繁荣富强贡献自己的力量。
+            </p>
+            <button id="toggle-more-films" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-medium py-2 px-6 rounded-md transition-all duration-300">
+                查看更多红色影片 <i class="fa fa-film ml-2"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- 视频部分 -->
+
+<div class="my-12 px-4 md:px-8 lg:px-12">
+    <!-- 仅调整视频容器尺寸 -->
+    <div class="bg-gray-100 rounded-lg overflow-hidden w-full max-w-full mx-auto shadow-md"> 
+        <video class="w-full h-auto" controls poster="./images/spfm1.png" style="max-height: 80vh;">
+            <source src="./images/spp.mp4" type="video/mp4">
+            您的浏览器不支持 HTML5 视频
+        </video>
+    </div>
+</div>
+<style>
+    /* 展开动画效果 */
+    .movie-details-content {
+        max-height: 0;
+        opacity: 0;
+        transition: all 0.5s ease;
+        overflow: hidden;
+    }
+    
+    .movie-details-content.active {
+        max-height: 500px;
+        opacity: 1;
+    }
+    
+    /* 卡片悬停效果 */
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* 更多影片网格悬停效果 */
+    #more-films-grid {
+        perspective: 1000px;
+    }
+    
+    .film-card {
+        transition: all 0.3s ease;
+        transform-origin: center center;
+        position: relative;
+        z-index: 1;
+    }
+    
+    #more-films-grid:hover .film-card:not(:hover) {
+        opacity: 0.3;
+        transform: scale(0.95);
+        filter: blur(1px);
+    }
+    
+    #more-films-grid .film-card:hover {
+        opacity: 1;
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 点击"了解更多"按钮展开详情
+        document.querySelectorAll('.movie-details-toggle').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                
+                // 先关闭所有已打开的详情
+                document.querySelectorAll('.movie-details-content').forEach(item => {
+                    if (item.id !== targetId && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.classList.add('hidden');
+                    }
+                });
+                
+                // 切换当前详情
+                content.classList.toggle('active');
+                content.classList.toggle('hidden');
+                
+                // 如果是展开，滚动到详情可见
+                if (content.classList.contains('active')) {
+                    setTimeout(() => {
+                        content.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                    }, 100);
+                }
+            });
+        });
+        
+        // 点击"收起详情"按钮
+        document.querySelectorAll('.movie-details-close').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const content = this.closest('.movie-details-content');
+                content.classList.remove('active');
+                content.classList.add('hidden');
+            });
+        });
+        
+        // 查看更多红色影片功能
+        const toggleMoreFilmsBtn = document.getElementById('toggle-more-films');
+        const moreFilmsGrid = document.getElementById('more-films-grid');
+        
+        if (toggleMoreFilmsBtn && moreFilmsGrid) {
+            toggleMoreFilmsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                moreFilmsGrid.classList.toggle('hidden');
+                
+                // 更新按钮文本
+                if (moreFilmsGrid.classList.contains('hidden')) {
+                    this.innerHTML = '查看更多红色影片 <i class="fa fa-film ml-2"></i>';
+                } else {
+                    this.innerHTML = '收起影片 <i class="fa fa-angle-up ml-2"></i>';
+                    
+                    // 平滑滚动到更多影片部分
+                    setTimeout(() => {
+                        moreFilmsGrid.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
+            });
+        }
+        
+        // 初始化Swiper
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.movieSwiper', {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+
+        
+
+<!-- 红色剧本杀 -->
+    <section id="script" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">沉浸式体验革命历史</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        队员们通过红色剧本杀《觉醒》，化身学生、工人、进步知识分子等角色，深度代入20世纪初救亡图存的峥嵘岁月。从封建崩塌的迷茫到辛亥、新文化的冲击，再到五四浪潮的席卷，队员们借助角色之眼，亲历马克思主义的传播、工农运动的萌芽和党的诞生带来的曙光。
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">角色扮演</h4>
+                                <p class="text-gray-600 text-sm">同学们分别扮演不同的历史角色，通过对话、推理和决策推动剧情发展</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">历史知识学习</h4>
+                                <p class="text-gray-600 text-sm">在游戏过程中，同学们需要了解相关的历史背景和事件，才能更好地完成任务</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">团队协作</h4>
+                                <p class="text-gray-600 text-sm">玩家需要与队友合作，共同解决问题，完成任务目标</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        体验红色剧本杀 <i class="fa fa-book ml-2"></i>
+                    </a>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-xl hover-scale">
+                    <!-- 轮播图容器 -->
+                    <div class="swiper scriptSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./images/剧本/111.jpg" alt="红色剧本杀活动现场" class="w-full h-auto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/剧本/222.jpg" alt="剧本杀角色扮演" class="w-full h-auto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/剧本/333.jpg" alt="剧本杀团队讨论" class="w-full h-auto">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- 在原有代码基础上添加以下内容 -->
+
+<!-- 剧本杀弹窗 - 初始隐藏 -->
+<div id="script-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- 背景遮罩 -->
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        
+        <!-- 模态框内容 -->
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full">
+            <div class="bg-white px-6 pt-6 pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <h3 class="text-3xl leading-6 font-bold text-gray-900 mb-4 text-center">
+                            《觉醒》红色剧本杀
+                        </h3>
+                        
+                        <!-- 背景介绍 -->
+                        <div class="bg-gray-50 p-5 rounded-lg mb-8 border border-gray-200">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">背景介绍</h4>
+                            <p class="text-gray-700 mb-3">
+                               你只看到盛世如画，可曾记得这太平画卷之下的累累白骨?
+我愿乘长风，破万里浪。虽九死，其犹未悔。
+吃人的是我哥哥!我是吃人的人的兄弟!我自己被人吃了，可仍然是吃人的人的兄弟!
+在你眼中，那是一个怎样的时代呢?
+也许浪漫，也许残酷。
+其实那个时代离我们并不遥远，那群人也没有离开很久。可我们却已渐渐忘了那一个个充斥着英雄主义光辉的名字，以及属于那些名字的故事。
+准备好了吗?我要开始讲起那些沉重的、悲壮的、英勇的、决绝的、豪迈的、激扬的故事了。
+                            </p>
+准备好了吗?我要开始讲起那些沉重的、悲壮的、英勇的、决绝的、豪迈的、激扬的故事了。
+                            </p>
+                        </div>
+                        
+                        <style>
+    /* 人物卡片容器 - 添加溢出隐藏 */
+    .character-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        height: 12rem; /* 固定高度 */
+    }
+    
+    /* 人物图片样式 */
+    .character-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    /* 悬停时图片放大效果 */
+    .character-card:hover .character-img {
+        transform: scale(1.1);
+    }
+    
+    /* 文字信息样式 */
+    .character-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        padding: 1rem;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+    
+    /* 悬停时显示文字信息 */
+    .character-card:hover .character-info {
+        transform: translateY(0);
+    }
+</style>
+
+<!-- 修改人物卡片部分代码 -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- 人物1 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/1.jpg" alt="谢灵" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">谢灵</h4>
+                <p class="text-sm">军人世家出身，在烟台海边长大，具备坚韧和勇敢的品质</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 人物2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/2.jpg" alt="何秀织" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">何秀织</h4>
+                <p class="text-sm">来自普通教师家庭，家庭负债累累</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 人物3 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/3.jpg" alt="于津颖" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">于津颖</h4>
+                <p class="text-sm">富商之女，中国早期女权主义者，具有主见和领导力</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 人物4 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/4.jpg" alt="邓君澜" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">邓君澜</h4>
+                <p class="text-sm">官宦子弟，心高气傲，对人间疾苦缺乏了解</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 人物5 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/5.jpg" alt="于济苍" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">于济苍</h4>
+                <p class="text-sm">富商之子，性格胆小怕事</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 人物6 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+        <div class="character-card">
+            <img src="./images/剧本/6.jpg" alt="左根生" class="character-img">
+            <div class="character-info">
+                <h4 class="font-bold text-lg mb-1">左根生</h4>
+                <p class="text-sm">山西农民，嫉恶如仇，渴望改变社会的不公</p>
+            </div>
+        </div>
+    </div>
+     <!-- 底部按钮 -->
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="close-script-modal" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    立即参与
+                </button>
+                <button type="button" id="cancel-script-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    稍后再说
+                </button>
+            </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+        </div>
+    </div>
+</div>
+
+<script>
+    // 点击"体验红色剧本杀"按钮
+    document.querySelector('a[href="#"].bg-primary').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('script-modal').classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+    });
+    
+    // 点击关闭按钮
+    document.getElementById('close-script-modal').addEventListener('click', function() {
+        document.getElementById('script-modal').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        // 这里可以添加跳转到报名页面的代码
+    });
+    
+    // 点击取消按钮
+    document.getElementById('cancel-script-modal').addEventListener('click', function() {
+        document.getElementById('script-modal').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    });
+    
+    // 点击模态框外部关闭
+    document.getElementById('script-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    });
+</script>
+
+<style>
+    /* 模态框动画 */
+    #script-modal {
+        transition: opacity 0.3s ease;
+    }
+    
+    /* 人物卡片悬停效果 */
+    .transition-shadow {
+        transition: box-shadow 0.3s ease;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 640px) {
+        .grid-cols-3, .grid-cols-2 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<!-- 在原有代码基础上添加以下内容 -->
+
+<!-- 角色选择弹窗 - 初始隐藏 -->
+<div id="role-select-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- 背景遮罩 -->
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        
+        <!-- 模态框内容 -->
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+            <div class="bg-white px-6 pt-6 pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <h3 class="text-3xl leading-6 font-bold text-gray-900 mb-6 text-center">
+                            请选择您的角色
+                        </h3>
+                        
+                        <!-- 角色选择 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- 角色1 -->
+                            <div class="role-option cursor-pointer" data-role="谢灵">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/1.jpg" alt="谢灵" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">谢灵</h4>
+                                        <p class="text-gray-600 text-sm">军人世家出身，在烟台海边长大，具备坚韧和勇敢的品质</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色2 -->
+                            <div class="role-option cursor-pointer" data-role="何秀织">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/2.jpg" alt="何秀织" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">何秀织</h4>
+                                        <p class="text-gray-600 text-sm">来自普通教师家庭，家庭负债累累</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色3 -->
+                            <div class="role-option cursor-pointer" data-role="于津颖">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/3.jpg" alt="于津颖" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">于津颖</h4>
+                                        <p class="text-gray-600 text-sm">富商之女，中国早期女权主义者，具有主见和领导力</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色4 -->
+                            <div class="role-option cursor-pointer" data-role="邓君澜">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/4.jpg" alt="邓君澜" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">邓君澜</h4>
+                                        <p class="text-gray-600 text-sm">官宦子弟，心高气傲，对人间疾苦缺乏了解</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色5 -->
+                            <div class="role-option cursor-pointer" data-role="于济苍">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/5.jpg" alt="于济苍" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">于济苍</h4>
+                                        <p class="text-gray-600 text-sm">富商之子，性格胆小怕事</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色6 -->
+                            <div class="role-option cursor-pointer" data-role="左根生">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                                    <img src="./images/剧本/6.jpg" alt="左根生" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg text-gray-800 mb-1">左根生</h4>
+                                        <p class="text-gray-600 text-sm">山西农民，嫉恶如仇，渴望改变社会的不公</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部按钮 -->
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="cancel-role-select" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 角色剧本弹窗 - 初始隐藏 -->
+<div id="role-script-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- 背景遮罩 -->
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        
+        <!-- 模态框内容 -->
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+            <div class="bg-white px-6 pt-6 pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <h3 class="text-3xl leading-6 font-bold text-gray-900 mb-4 text-center" id="role-title">
+                            角色剧本
+                        </h3>
+                        
+                        <!-- 角色信息 -->
+                        <div class="flex flex-col sm:flex-row mb-6">
+                            <div class="sm:w-1/3 mb-4 sm:mb-0 sm:pr-4">
+                                <img id="role-image" src="" alt="角色图片" class="w-full h-auto rounded-lg shadow-md">
+                            </div>
+                            <div class="sm:w-2/3">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2" id="role-name">角色名称</h4>
+                                <p class="text-gray-700 mb-4" id="role-description">角色描述</p>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-gray-800 mb-2">角色关键词</h5>
+                                    <div class="flex flex-wrap gap-2" id="role-keywords">
+                                        <!-- 关键词将通过JS动态添加 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 剧本内容 -->
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">剧本内容</h4>
+                            <div class="text-gray-700 space-y-4" id="role-script-content">
+                                <!-- 剧本内容将通过JS动态添加 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部按钮 -->
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="start-game" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    开始游戏
+                </button>
+                <button type="button" id="back-to-roles" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    返回选择角色
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 角色数据
+    const rolesData = {
+        "谢灵": {
+            image: "./images/剧本/1.jpg",
+            description: "军人世家出身，在烟台海边长大，具备坚韧和勇敢的品质。父亲是北洋水师军官，从小接受严格军事教育。",
+            keywords: ["军人世家", "勇敢", "爱国", "军事才能"],
+            script: `
+                <p>1919年5月4日，北京爆发了震惊中外的五四运动。作为北京大学的学生，你亲眼目睹了这场爱国运动的爆发。</p>
+                <p class="mt-3">那天清晨，你像往常一样在操场晨练，突然听到校园里响起了急促的钟声。同学们纷纷涌向操场，高喊着"外争国权，内惩国贼"的口号。</p>
+                <p class="mt-3">你的军事训练背景使你成为了学生队伍的领头人之一。面对军警的阻拦，你需要做出选择...</p>
+            `
+        },
+        "何秀织": {
+            image: "./images/剧本/2.jpg",
+            description: "来自普通教师家庭，家庭负债累累。为了减轻家庭负担，课余时间在纺织厂做女工。",
+            keywords: ["勤工俭学", "坚韧", "工人阶级", "觉醒"],
+            script: `
+                <p>你在纺织厂工作已经两年了，每天工作12小时，却只能拿到微薄的工资。厂里的工人们生活在极度贫困中。</p>
+                <p class="mt-3">五四运动爆发后，你听到了学生们"劳工神圣"的口号。这让你开始思考工人的命运和权利。</p>
+                <p class="mt-3">当工厂主再次宣布降低工资时，你需要决定是否带领工友们站出来反抗...</p>
+            `
+        },
+        "于津颖": {
+            image: "./images/剧本/3.jpg",
+            description: "富商之女，中国早期女权主义者，具有主见和领导力。反对包办婚姻，追求女性解放。",
+            keywords: ["女权主义", "独立", "进步思想", "领导力"],
+            script: `
+                <p>作为新女性代表，你组织了"女子救国团"，号召女性走出家庭，参与社会变革。</p>
+                <p class="mt-3">五四运动期间，你带领女校学生冲破校方阻挠，加入游行队伍。这是北京历史上第一次有大规模女学生参与的示威活动。</p>
+                <p class="mt-3">当家人要求你立即完婚以"安分守己"时，你需要做出人生抉择...</p>
+            `
+        },
+        "邓君澜": {
+            image: "./images/剧本/4.jpg",
+            description: "官宦子弟，心高气傲，对人间疾苦缺乏了解。但在五四运动中逐渐觉醒。",
+            keywords: ["官宦子弟", "觉醒", "转变", "理想主义"],
+            script: `
+                <p>你出身显赫，从小锦衣玉食。直到五四运动那天，你看到军警殴打手无寸铁的学生，世界观开始崩塌。</p>
+                <p class="mt-3">你发现自己的父亲竟然在镇压学生的命令上签了字。这让你陷入深深的矛盾和痛苦。</p>
+                <p class="mt-3">当同学们计划火烧赵家楼时，你是否要参与这次直接行动？</p>
+            `
+        },
+        "于济苍": {
+            image: "./images/剧本/5.jpg",
+            description: "富商之子，性格胆小怕事。但在国家危亡之际，也开始思考个人责任。",
+            keywords: ["胆小", "成长", "商业世家", "内心挣扎"],
+            script: `
+                <p>你一直是个胆小的人，害怕惹事。但五四运动那天，看到同学们慷慨激昂的样子，你第一次感到热血沸腾。</p>
+                <p class="mt-3">你的家族生意与日本有往来，父亲警告你不要参与反日活动。但你看到同胞们在巴黎和会上受辱，内心充满矛盾。</p>
+                <p class="mt-3">当游行队伍遭到镇压时，你需要决定是逃跑避险还是留下来帮助受伤的同学...</p>
+            `
+        },
+        "左根生": {
+            image: "./images/剧本/6.jpg",
+            description: "山西农民，嫉恶如仇，渴望改变社会的不公。因家乡灾荒流落北京，成为工人。",
+            keywords: ["农民出身", "反抗精神", "工人阶级", "革命性"],
+            script: `
+                <p>你在农村长大，亲眼目睹了地主对农民的残酷剥削。逃荒到北京后，在铁厂做苦力，生活依然艰难。</p>
+                <p class="mt-3">五四运动中，你第一次听到"劳工神圣"的口号，这让你感到前所未有的希望和力量。</p>
+                <p class="mt-3">当学生们呼吁工人支持时，你是否要带领工友们加入这场爱国运动？这将冒着失业甚至被捕的风险...</p>
+            `
+        }
+    };
+
+    // 当前选择的角色
+    let selectedRole = null;
+
+    // 点击"立即参与"按钮
+    document.getElementById('close-script-modal').addEventListener('click', function() {
+        document.getElementById('script-modal').classList.add('hidden');
+        document.getElementById('role-select-modal').classList.remove('hidden');
+    });
+    
+    // 点击角色选项
+    document.querySelectorAll('.role-option').forEach(option => {
+        option.addEventListener('click', function() {
+            selectedRole = this.getAttribute('data-role');
+            const roleData = rolesData[selectedRole];
+            
+            // 填充角色剧本信息
+            document.getElementById('role-title').textContent = `${selectedRole}的剧本`;
+            document.getElementById('role-name').textContent = selectedRole;
+            document.getElementById('role-image').src = roleData.image;
+            document.getElementById('role-image').alt = selectedRole;
+            document.getElementById('role-description').textContent = roleData.description;
+            
+            // 填充关键词
+            const keywordsContainer = document.getElementById('role-keywords');
+            keywordsContainer.innerHTML = '';
+            roleData.keywords.forEach(keyword => {
+                const span = document.createElement('span');
+                span.className = 'bg-red-100 text-red-800 text-xs px-2 py-1 rounded';
+                span.textContent = keyword;
+                keywordsContainer.appendChild(span);
+            });
+            
+            // 填充剧本内容
+            document.getElementById('role-script-content').innerHTML = roleData.script;
+            
+            // 显示角色剧本弹窗
+            document.getElementById('role-select-modal').classList.add('hidden');
+            document.getElementById('role-script-modal').classList.remove('hidden');
+        });
+    });
+    
+    // 点击"返回选择角色"
+    document.getElementById('back-to-roles').addEventListener('click', function() {
+        document.getElementById('role-script-modal').classList.add('hidden');
+        document.getElementById('role-select-modal').classList.remove('hidden');
+    });
+    
+    // 点击"返回"按钮（从角色选择返回主弹窗）
+    document.getElementById('cancel-role-select').addEventListener('click', function() {
+        document.getElementById('role-select-modal').classList.add('hidden');
+        document.getElementById('script-modal').classList.remove('hidden');
+    });
+    
+    // 点击"开始游戏"按钮
+    document.getElementById('start-game').addEventListener('click', function() {
+        alert(`游戏开始！您将扮演 ${selectedRole}，祝您体验愉快！`);
+        document.getElementById('role-script-modal').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    });
+    
+    // 点击模态框外部关闭
+    [document.getElementById('role-select-modal'), document.getElementById('role-script-modal')].forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+    });
+</script>
+
+<style>
+    /* 角色选项悬停效果 */
+    .role-option:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+    
+    /* 关键词标签样式 */
+    #role-keywords span {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
+    
+    /* 剧本内容段落间距 */
+    #role-script-content p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+</style>
+<div class="my-12 px-4 md:px-8 lg:px-12">
+    <!-- 仅调整视频容器尺寸 -->
+    <div class="bg-gray-100 rounded-lg overflow-hidden w-full max-w-full mx-auto shadow-md"> 
+        <video class="w-full h-auto" controls poster="./images/觉醒年代.png" style="max-height: 80vh;">
+            <source src="./images/juexing.mp4" type="video/mp4">
+            您的浏览器不支持 HTML5 视频
+        </video>
+    </div>
+</div>
+
+<!-- 知识问答模块 -->
+<section id="quiz" class="py-20 relative">
+    <!-- 背景图层 -->
+    <div class="absolute inset-0 z-0">
+        <img src="./images/bj3 (2).png" alt="背景图" class="w-full h-full object-cover opacity-10">
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <span class="inline-block text-primary font-medium mb-2">学习测试</span>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-black mb-4">红色知识问答</h2>
+            <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto bg-white bg-opacity-90 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm">
+            <div class="p-8">
+                <!-- 问题卡片 -->
+                <div id="questionCard" class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6" id="question">中国共产党第一次全国代表大会于哪一年召开？</h3>
+                    <div class="space-y-4" id="options">
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="quiz" id="option1" class="hidden">
+                            <label for="option1" class="block cursor-pointer bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg p-4 transition-all">
+                                <span class="font-medium">1921年</span>
+                            </label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="quiz" id="option2" class="hidden">
+                            <label for="option2" class="block cursor-pointer bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg p-4 transition-all">
+                                <span class="font-medium">1927年</span>
+                            </label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="quiz" id="option3" class="hidden">
+                            <label for="option3" class="block cursor-pointer bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg p-4 transition-all">
+                                <span class="font-medium">1935年</span>
+                            </label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="quiz" id="option4" class="hidden">
+                            <label for="option4" class="block cursor-pointer bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg p-4 transition-all">
+                                <span class="font-medium">1949年</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 结果反馈 -->
+                <div id="result" class="hidden mb-8">
+                    <div class="p-4 rounded-lg mb-4">
+                        <h4 class="font-bold text-xl mb-2" id="resultTitle"></h4>
+                        <p class="text-gray-700" id="resultDescription"></p>
+                    </div>
+                </div>
+                
+                <!-- 控制按钮 -->
+                <div class="flex justify-between">
+                    <button id="prevBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-md transition-all duration-300">
+                        <i class="fa fa-arrow-left mr-2"></i>上一题
+                    </button>
+                    <button id="checkBtn" class="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-md transition-all duration-300">
+                        检查答案
+                    </button>
+                    <button id="nextBtn" class="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-md transition-all duration-300">
+                        下一题 <i class="fa fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 问答进度 -->
+            <div class="bg-gray-100 p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-700">答题进度</span>
+                    <span class="text-primary font-medium"><span id="currentQuestion">1</span>/<span id="totalQuestions">5</span></span>
+                </div>
+                <div class="w-full bg-gray-300 rounded-full h-2">
+                    <div id="progressBar" class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 学习资源 -->
+        <div class="mt-12 bg-white bg-opacity-90 rounded-xl shadow-lg p-8 backdrop-blur-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-6">学习资源推荐</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <i class="fa fa-book text-primary text-2xl mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">《中国共产党简史》</h4>
+                        <p class="text-sm text-gray-600">了解党的光辉历程</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <i class="fa fa-film text-primary text-2xl mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">红色影视作品集</h4>
+                        <p class="text-sm text-gray-600">革命题材影视作品</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <i class="fa fa-picture-o text-primary text-2xl mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">革命历史图库</h4>
+                        <p class="text-sm text-gray-600">珍贵历史照片资料</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* 自定义背景样式 */
+#quiz {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 内容卡片毛玻璃效果 */
+.backdrop-blur-sm {
+    backdrop-filter: blur(5px);
+}
+</style>
+
+
+<!-- 实践掠影 -->
+<section id="gallery" class="py-20 relative">
+    <!-- 背景图层 -->
+    <div class="absolute inset-0 z-0">
+        <img src="./images/bj3 (2).png" alt="背景图" class="w-full h-full object-cover opacity-10">
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10"> <!-- 添加relative z-10确保内容在背景之上 -->
+        <div class="text-center mb-16">
+            <span class="inline-block text-primary font-medium mb-2">社会实践记录</span>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">实践掠影</h2>
+            <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <!-- 轮播图容器 - 恢复原始横向轮播形式 -->
+        <div class="swiper gallerySwiper relative pb-10 bg-white bg-opacity-90 rounded-xl shadow-md"> <!-- 添加半透明白色背景 -->
+            <div class="swiper-wrapper">
+                <!-- 轮播项 - 保留基础结构，增加微动效 -->
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/天安门广场.jpg" alt="天安门广场合影" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">天安门广场录制微团课</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/军博.jpg" alt="军事博物馆参观" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">军事博物馆参观</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/北大红楼1.jpg" alt="北大红楼学习" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">北大红楼学习</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/红色剧本杀.jpg" alt="红色剧本杀活动" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">红色剧本杀活动</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/红色观影.jpg" alt="红色观影活动" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">红色观影活动</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-white group">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="./images/实践掠影/党博.jpg" alt="党史展览馆参观" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-medium text-gray-800 group-hover:text-primary transition-colors duration-300">党史展览馆参观</h4>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            
+            <!-- 轮播控制按钮 - 保留原始位置和样式 -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination !bottom-0"></div> <!-- 添加!bottom-0将分页器定位到底部 -->
+        </div>
+        
+
+<style>
+/* 自定义分页器样式 */
+.swiper-pagination {
+    position: absolute;
+    bottom: 0 !important; /* 确保分页器位于容器底部 */
+    margin-top: 1.5rem; /* 增加与内容的间距 */
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #3b82f6; /* 使用primary颜色 */
+}
+
+/* 背景图样式 */
+#gallery {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+</style>
+
+<script>
+// 初始化Swiper
+var gallerySwiper = new Swiper('.gallerySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
+</script>
+
+
+
+
+    <!-- 总结与感悟 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-primary font-medium mb-2">活动总结</span>
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">实践感悟</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-neutral rounded-xl p-8 shadow-lg hover-scale">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">深刻的历史教育</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        通过这次社会实践，我们深入了解了中国共产党的光辉历史和伟大成就，深刻认识到了今天的幸福生活来之不易。我们要铭记历史，缅怀先烈，珍惜现在，开创未来。
+                    </p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 shadow-lg hover-scale">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">强烈的爱国情怀</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        在参观过程中，我们被革命先辈们的英勇事迹和崇高精神所深深感动，心中涌起无限的爱国情怀。我们要热爱祖国，热爱人民，为实现中华民族伟大复兴的中国梦而努力奋斗。
+                    </p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 shadow-lg hover-scale">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">明确的责任担当</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        作为新时代的青年，我们肩负着实现中华民族伟大复兴的历史使命。我们要努力学习科学文化知识，提高自身素质，增强责任感和使命感，为祖国的繁荣富强贡献自己的力量。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-primary/5 rounded-xl p-8 border-l-4 border-primary">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">活动总结</h3>
+                <p class="text-gray-600 mb-4">
+                    这次红色教育社会实践活动是一次生动而深刻的爱国主义教育课。通过参观红色景点、观看红色影片、参与红色剧本杀等活动，同学们深入了解了中国共产党的光辉历史和伟大成就，深刻体会到了革命先辈们的牺牲精神和爱国情怀。
+                </p>
+                <p class="text-gray-600">
+                    活动不仅丰富了同学们的课余生活，更重要的是让大家在实践中接受了一次思想的洗礼，增强了爱国情感和社会责任感。同学们纷纷表示，要以此次活动为契机，努力学习，立志成才，为实现中华民族伟大复兴的中国梦贡献自己的力量。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-book text-primary text-2xl"></i>
+                        <span class="text-xl font-bold">红色教育实践</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        传承红色基因，争做时代新人。让我们一起走进历史，感受革命精神，激发爱国热情。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">快速链接</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#square" class="text-gray-400 hover:text-primary transition-colors">天安门广场</a></li>
+                        <li><a href="#monument" class="text-gray-400 hover:text-primary transition-colors">人民英雄纪念碑</a></li>
+                        <li><a href="#movie" class="text-gray-400 hover:text-primary transition-colors">红色观影</a></li>
+                        <li><a href="#quiz" class="text-gray-400 hover:text-primary transition-colors">知识问答</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">红色景点</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#museum" class="text-gray-400 hover:text-primary transition-colors">军事博物馆</a></li>
+                        <li><a href="#honglou" class="text-gray-400 hover:text-primary transition-colors">北大红楼</a></li>
+                        <li><a href="#history" class="text-gray-400 hover:text-primary transition-colors">党史展览馆</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">故宫博物院</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">中国国家博物馆</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+    <h4 class="text-lg font-bold mb-6">联系我们</h4>
+    <ul class="space-y-3">
+        <li class="flex items-start">
+            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+            <span class="text-gray-400">山东省聊城市湖南路1号——聊城大学</span>
+        </li>
+        <li class="flex items-center">
+            <i class="fa fa-phone text-primary mr-3"></i>
+            <span class="text-gray-400">010-12345678</span>
+        </li>
+        <li class="flex items-center">
+            <i class="fa fa-envelope text-primary mr-3"></i>
+            <a href="https://www.lcu.edu.cn/" target="_blank" class="text-gray-400 hover:text-primary transition-colors">https://www.lcu.edu.cn/</a>
+        </li>
+    </ul>
+</div>
+            </div>
+            
+
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'shadow-md');
+            }
+        });
+        
+        // 移动端菜单切换
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                mobileMenu.classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 知识问答功能
+        const quizData = [
+            {
+                question: "中国共产党第一次全国代表大会于哪一年召开？",
+                options: ["1921年", "1927年", "1935年", "1949年"],
+                correct: 0,
+                explanation: "中国共产党第一次全国代表大会于1921年7月23日在上海法租界望志路106号（今兴业路76号）开幕，最后一天会议转移到浙江嘉兴南湖的游船上举行。"
+            },
+            {
+                question: "五四运动爆发的直接导火线是什么？",
+                options: ["巴黎和会上中国外交的失败", "北洋军阀的黑暗统治", "新文化运动的兴起", "十月革命的影响"],
+                correct: 0,
+                explanation: "1919年1月，第一次世界大战战胜国在法国巴黎召开所谓的‘和平会议’，中国作为战胜国之一参加会议。中国代表在会上提出废除外国在中国的势力范围、撤退外国在中国的军队和取消‘二十一条’等正义要求，但遭到拒绝。巴黎和会不顾中国也是战胜国之一，决定将德国在中国山东的权益转让给日本。此消息传到中国后，北京学生群情激愤，学生、工商业者、教育界和许多爱国团体纷纷通电，斥责日本的无理行径，并且要求中国政府坚持国家主权。"
+            },
+            {
+                question: "长征途中，中国共产党召开的具有历史转折意义的会议是？",
+                options: ["遵义会议", "瓦窑堡会议", "洛川会议", "八七会议"],
+                correct: 0,
+                explanation: "遵义会议是1935年1月中共中央政治局在贵州遵义召开的独立自主地解决中国革命问题的一次极其重要的扩大会议。这次会议开始确立实际以毛泽东为代表的马克思主义的正确路线在中共中央的领导地位，挽救了党、挽救了红军、挽救了中国革命，是中国共产党历史上一个生死攸关的转折点。"
+            },
+            {
+                question: "中华人民共和国国旗的设计者是谁？",
+                options: ["曾联松", "梁思成", "林徽因", "徐悲鸿"],
+                correct: 0,
+                explanation: "1949年7月，中华人民共和国成立前夕，新政协筹备会在《人民日报》等报纸上刊登了征集国旗图案的启事。曾联松设计了‘红底五星旗’图案，经修改后被确定为中华人民共和国国旗。"
+            },
+            {
+                question: "抗日战争全面爆发的标志是？",
+                options: ["卢沟桥事变", "九一八事变", "一二八事变", "八一三事变"],
+                correct: 0,
+                explanation: "1937年7月7日夜，日军在北平西南卢沟桥附近演习时，借口一名士兵‘失踪’，要求进入宛平县城搜查，遭到中国守军第29军严辞拒绝。日军遂向中国守军开枪射击，又炮轰宛平城。第29军奋起抗战。这就是震惊中外的七七事变，又称卢沟桥事变。七七事变是日本帝国主义全面侵华战争的开始，也是中华民族进行全面抗战的起点。"
+            }
+        ];
+        
+        let currentQuiz = 0;
+        const totalQuestions = quizData.length;
+        let userAnswers = new Array(totalQuestions).fill(-1);
+        
+        document.getElementById('totalQuestions').textContent = totalQuestions;
+        document.getElementById('currentQuestion').textContent = currentQuiz + 1;
+        
+        function loadQuestion(index) {
+            const q = quizData[index];
+            document.getElementById('question').textContent = q.question;
+            
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((option, i) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'quiz-option';
+                optionDiv.dataset.correct = i === q.correct;
+                
+                const radioId = `option${i+1}`;
+                
+                optionDiv.innerHTML = `
+                    <input type="radio" name="quiz" id="${radioId}" class="hidden">
+                    <label for="${radioId}" class="block cursor-pointer bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg p-4 transition-all">
+                        <span class="font-medium">${option}</span>
+                    </label>
+                `;
+                
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            // 更新进度
+            document.getElementById('currentQuestion').textContent = index + 1;
+            document.getElementById('progressBar').style.width = `${((index + 1) / totalQuestions) * 100}%`;
+            
+            // 更新按钮状态
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalQuestions - 1;
+            
+            // 重置结果区域
+            document.getElementById('result').classList.add('hidden');
+        }
+        
+        function showResult(isCorrect, explanation) {
+            const resultEl = document.getElementById('result');
+            const titleEl = document.getElementById('resultTitle');
+            const descEl = document.getElementById('resultDescription');
+            
+            resultEl.classList.remove('hidden');
+            
+            if (isCorrect) {
+                resultEl.className = 'bg-green-100 border-l-4 border-green-500 p-4 rounded-lg mb-4';
+                titleEl.textContent = '回答正确！';
+                titleEl.className = 'font-bold text-xl mb-2 text-green-800';
+            } else {
+                resultEl.className = 'bg-red-100 border-l-4 border-red-500 p-4 rounded-lg mb-4';
+                titleEl.textContent = '回答错误！';
+                titleEl.className = 'font-bold text-xl mb-2 text-red-800';
+            }
+            
+            descEl.textContent = explanation;
+        }
+        
+        // 初始化第一个问题
+        loadQuestion(currentQuiz);
+        
+        // 事件监听
+        document.getElementById('checkBtn').addEventListener('click', function() {
+            const selectedOption = document.querySelector('input[name="quiz"]:checked');
+            if (!selectedOption) {
+                alert('请选择一个答案！');
+                return;
+            }
+            
+            const optionIndex = parseInt(selectedOption.id.replace('option', '')) - 1;
+            const isCorrect = optionIndex === quizData[currentQuiz].correct;
+            
+            userAnswers[currentQuiz] = optionIndex;
+            showResult(isCorrect, quizData[currentQuiz].explanation);
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentQuiz < totalQuestions - 1) {
+                currentQuiz++;
+                loadQuestion(currentQuiz);
+            }
+        });
+        
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentQuiz > 0) {
+                currentQuiz--;
+                loadQuestion(currentQuiz);
+            }
+        });
+        
+        // 初始化所有轮播图
+        const swipers = [
+            { id: '.squareSwiper', options: { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } } },
+            { id: '.monumentSwiper', options: { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } } },
+            { id: '.movieSwiper', options: { slidesPerView: 1, spaceBetween: 20, loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } } },
+            { id: '.scriptSwiper', options: { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } } },
+            { id: '.museumSwiper', options: { slidesPerView: 1, spaceBetween: 20, loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } } },
+            { id: '.honglouSwiper', options: { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } } },
+            { id: '.historySwiper', options: { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } } },
+            { id: '.gallerySwiper', options: { slidesPerView: 2, spaceBetween: 20, loop: true, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } } } }
+        ];
+        
+        swipers.forEach(swiper => {
+            new Swiper(swiper.id, swiper.options);
+        });
+    </script>
+</body>
+</html>
